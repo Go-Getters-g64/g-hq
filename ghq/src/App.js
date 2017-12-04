@@ -5,14 +5,20 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo}  alt="logo" />
-        </header>
+      <div>
         <main>
-          <h1 >gStudent HeadQuarters: a portal for Galvanize Students</h1>
-          <button className='btn btn-info btn-lg'>Login</button>
-          <button className='btn btn-info btn-lg'>Register</button>
+          <div className='container'>
+            <div className='row justify-content center'>
+              <div className='col-4'>
+                <img src={logo} class='logo' alt="logo" />
+              </div>
+              <div className='col-4'>
+                <h1 >A portal for gStudents</h1>
+              </div>
+            </div>
+            <button className='btn btn-info btn-lg'>Login</button>
+            <button className='btn btn-info btn-lg'>Register</button>
+          </div>
         </main>
       </div>
     );
