@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import logo from './g.png';
 import './App.css';
+import LoginButtons from './components/LoginButtons'
+import LoginForm from './components/LoginForm'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      buttons: true,
+      form: false
+    }
+  }
+
+  toggleForm(e) {
+    if (this.state.buttons === true) {
+      this.setState({buttons: false})
+    } else {
+      this.setState({form: true})
+    }
+  }
+
   render() {
     return (
       <div>
@@ -16,8 +34,8 @@ class App extends Component {
                 <h1 >A portal for gStudents</h1>
               </div>
             </div>
-            <button className='btn btn-info btn-lg'>Login</button>
-            <button className='btn btn-info btn-lg'>Register</button>
+            {this.state.buttons ? <LoginButtons toggleForm={this.toggleForm.bind(this)}
+        /> : <LoginForm />}
           </div>
         </main>
       </div>
