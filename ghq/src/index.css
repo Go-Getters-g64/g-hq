@@ -9,13 +9,14 @@ body {
   
 }
 
-main {
+.landingMain {
   text-align: center;
-  margin-top: 100px;
+  padding: 100px 0 100px 0;
+
 }
 
 h1 {
-  color: #9B9B9B;
+  color: rgba(19, 183, 220, 0.9);
 }
 
 
@@ -23,6 +24,15 @@ h1 {
   width: 25%;
 }
 
+.btn-info {
+  background: rgb(255, 170, 52);
+  border: none;
+  transition: background 0.5s;
+}
+
+.btn-info:hover {
+  background: rgba(255, 170, 52, 0.6);
+}
 button, input {
   margin: 10px 10px;
 }
@@ -34,4 +44,25 @@ input {
 
 p { 
   color: #9B9B9B;
+}
+
+header {
+  background: #2D2D2D;
+  
+}
+.headerLogo {
+  height: 75px;
+  padding: 8px 0 8px 0;
+
+}
+
+.registerMain {
+  margin: 15px 40px 0px 40px;
+}
+.registerSubmit {
+  margin: 5px 0px 5px 245px;
+}
+
+select {
+  margin: 8px 0px 5px 10px;
 }

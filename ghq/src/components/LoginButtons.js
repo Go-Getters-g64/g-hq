@@ -5,7 +5,7 @@ class LoginButtons extends Component {
     return (
           <div>
             <button onClick={this.props.toggleForm}className='btn btn-info btn-lg'>Login</button>
-            <button className='btn btn-info btn-lg'>Register</button>
+            <a href="/register"><button className='btn btn-info btn-lg'>Register</button></a>
           </div>
     );
   }

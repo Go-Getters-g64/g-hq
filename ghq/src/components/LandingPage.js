@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm'
 import LoginButtons from './LoginButtons'
-import logo from '../g.png';
+import logo from '../g1.png';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class LandingPage extends Component {
   render() {
     return (
         <div>
-          <main>
+          <main className="landingMain">
            <img src={logo} class='logo' alt="logo" />
             <h1 >A portal for gStudents</h1>
             {this.state.buttons ?   <LoginButtons toggleForm={this.toggleForm.bind(this)}
