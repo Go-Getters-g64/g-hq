@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './g.png';
 import './App.css';
 
 class App extends Component {
@@ -7,12 +7,13 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <img src={logo}  alt="logo" />
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <main>
+          <h1 >gStudent HeadQuarters: a portal for Galvanize Students</h1>
+          <button className='btn btn-info btn-lg'>Login</button>
+          <button className='btn btn-info btn-lg'>Register</button>
+        </main>
       </div>
     );
   }
