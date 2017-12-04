@@ -10,7 +10,7 @@ class Register extends Component {
         <div>
         <a href="/"><Header /></a>
           <main className="registerMain">
-          
+          <h1>Register An Account</h1>
           <form >
             <div className="row">
               <div className="form-group col-md-4">
@@ -49,7 +49,7 @@ class Register extends Component {
                   <option value="g75">g75</option>
                 </select>
               </div>
-              <button className='registerSubmit btn btn-info' type='submit'>Submit</button>
+              <a href="/hq/:id"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
             </div>
 
             <div className="row">
