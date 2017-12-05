@@ -52,8 +52,9 @@ header {
 }
 .headerLogo {
   height: 75px;
+  width: 110px;
   padding: 8px 0 8px 0;
-
+  margin: 0 0 0 10px;
 }
 
 .registerMain {
@@ -65,4 +66,97 @@ header {
 
 select {
   margin: 8px 0px 5px 10px;
+}
+
+.hqHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.dropbtn {
+  display: flex;
+  background: #2D2D2D;
+  color: #2D2D2D;
+  border-color: #2D2D2D;
+  font-size: 15px;
+  white-space: nowrap;
+  align-items: flex-end;
+}
+
+.studentPhoto {
+  height: 50px;
+  border-radius: 50%;
+  /* border: 1px solid rgb(255, 170, 52); */
+  border: 1px solid white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #2D2D2D;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3a3a3a;
+}
+
+.fa-sort-desc {
+  color:white;
+  margin: 1px 1px;
+  font-size: 2px;
+}
+
+.fa-plus {
+  color: rgb(255, 170, 52);
+  margin: 1px 1px;
+  font-size: 10px;
+}
+
+.appButtons {
+  font-size: 20px;
+  /* margin: 0 55px 0 55px; */
+  color:  rgb(19, 183, 220);
+}
+
+.appButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  white-space: nowrap;
+  width: 100vw;
+}
+
+.logOutButton {
+  background: #2D2D2D;
+  color: rgb(255, 170, 52);
+  border-color: rgb(255, 170, 52);
 }
