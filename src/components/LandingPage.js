@@ -21,13 +21,14 @@ class LandingPage extends Component {
   }
 
   render() {
+    // console.log(this.props.data);
     return (
         <div>
           <main className="landingMain">
            <img src={logo} class='logo' alt="logo" />
             <h1 >A portal for gStudents</h1>
             {this.state.buttons ?   <LoginButtons toggleForm={this.toggleForm.bind(this)}
-             /> : <LoginForm />}
+            /> : <LoginForm  userInput={this.props.userInput} />}
           </main>
         </div>
     );
@@ -35,5 +36,3 @@ class LandingPage extends Component {
 }
 
 export default LandingPage;
-
-
