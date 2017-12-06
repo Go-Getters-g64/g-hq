@@ -40,7 +40,7 @@ class App extends Component {
     this.setState({loginSuccess: true})
   }
 
- 
+
 
   registerUser(e) {
     e.preventDefault();
@@ -92,6 +92,8 @@ class App extends Component {
     console.log(this.state.data)
   }
 
+
+
   render() {
     return (
     <Router>
@@ -100,7 +102,7 @@ class App extends Component {
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />) 
           )} />
-          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} />)} />
+          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user}/>)} />
       </div>
     </Router>
     );
