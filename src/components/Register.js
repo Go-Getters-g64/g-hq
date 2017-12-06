@@ -3,33 +3,7 @@ import Header from './Header'
 
 class Register extends Component {
 
-  async createItem(item) {
-    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users/new', {
-      method: 'POST',
-      body: JSON.stringify(item),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    })
-    this.props.componentDidMount()
-  }
 
-  registerUser(e) {
-    e.preventDefault();
-    let item = {
-      subject: e.target.subject.value,
-      body: e.target.body.value,
-      name: e.target.name.value,
-      email: e.target.email.value,
-      cohort: e.target.cohort.value,
-      github_handle: e.target.cohort.github_handle,
-      linkedin_handle: e.target.linkedin_handle.value,
-      password: e.target.password.value,
-      role: e.target.role.value
-    }
-    this.createItem(item)
-  }
 
   render() {
     return (
@@ -38,7 +12,7 @@ class Register extends Component {
         <main className="registerMain">
           <h1>Register An Account</h1>
           
-          <form>
+          <form onSubmit={this.props.registerUser}>
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="name">Name</label>
@@ -70,15 +44,16 @@ class Register extends Component {
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="github">Github URL</label>
-                <input required="required" id = "github_handle" className="form-control" placeholder="http://www.github.com/example" type="url"
-                name="github"/>
+                
+                <input required="required" id="github_handle" className="form-control" placeholder="http://www.github.com/example <-- just the handle" type="text" />
+              
               </div>
             </div>
 
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="linkedin">LinkedIn URL</label>
-                <input required="required" id = "linkedin_handle" className="form-control" placeholder="http://www.linkedin.com/in/example" type="url"
+                <input required="required" id = "linkedin_handle" className="form-control" placeholder="http://www.linkedin.com/in/example <-- just the handle" type="text"
                 name="linkedin"/>
               </div>
             </div>
@@ -91,13 +66,12 @@ class Register extends Component {
               </div>
             </div>
 
-            <div className="row">
+            {/* <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="name">Re-enter Password</label>
-                <input required="required" className="form-control" placeholder="enter password" type="password"
-                name="password"/>
+                <input required="required" className="form-control" placeholder="enter password" type="password"/>
               </div>
-            </div>
+            </div> */}
 
             <input type="hidden" value="student" id="role"/>
 

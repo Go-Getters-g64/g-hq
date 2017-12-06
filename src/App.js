@@ -13,6 +13,8 @@ class App extends Component {
     data: [],
     loggedIn: false,
     user: [],
+    userCreated: false,
+    loginSuccess: false
   }
 }
 
@@ -21,6 +23,36 @@ class App extends Component {
     const json = await response.json()
     this.setState({data: json})
     console.log(this.state.data)
+  }
+
+  async createItem(item) {
+    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users/new', {
+      method: 'POST',
+      body: JSON.stringify(item),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    this.componentDidMount()
+    this.setState({userCreated: true})
+    this.setState({loginSuccess: true})
+  }
+
+ 
+
+  registerUser(e) {
+    e.preventDefault();
+    let item = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      cohort: e.target.cohort.value,
+      github_handle: e.target.github_handle.value,
+      linkedin_handle: e.target.linkedin_handle.value,
+      password: e.target.password.value,
+      role: e.target.role.value
+    }
+    this.createItem(item)
   }
 
   loginCheck(e) {
@@ -47,9 +79,10 @@ class App extends Component {
     return (
     <Router>
       <div>
-          <Route exact path={"/"} render={(props) => ( this.state.loggedIn ? (<Redirect to={`/hq/${this.state.user.id}`} />) : ( <LandingPage data={this.state.data} userInput={this.loginCheck.bind(this)} />)
+          <Route exact path={"/"} render={(props) => ( this.state.loggedIn ? (<Redirect to={`/hq/${this.state.user.id}`} />) : ( <LandingPage data={this.state.data} loginSuccess={this.state.loginSuccess}userInput={this.loginCheck.bind(this)} />)
           )} />
-          <Route path={"/register"} render = {(props) => (<Register componentDidMount= {this.componentDidMount.bind(this)} />) } />
+          <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />) 
+          )} />
           <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} />)} />
       </div>
     </Router>
