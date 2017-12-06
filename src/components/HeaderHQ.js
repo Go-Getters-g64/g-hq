@@ -11,7 +11,7 @@ class HeaderHQ extends Component {
         <div>
           <header className='hqHeader'>
           <img className='headerLogo' src={logo2} alt="gHQ"/>
-          <DropDown />
+          <DropDown user={this.props.user}/>
           <div className='appButtonContainer'>
             <a className='appButtons' href="#">Meetup <i class="fa fa-meetup" aria-hidden="true"></i></a>
             <a className='appButtons' href="#">Career Services <i class="fa fa-briefcase" aria-hidden="true"></i></a>
