@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
+import Plan from './Plan.js'
 
 class DailyPlan extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class DailyPlan extends Component {
     this.state = {
       daily: [],
       userDaily: [],
+      oneDaily: [],
     }
   }
 
@@ -25,6 +27,14 @@ class DailyPlan extends Component {
     this.setState({userDaily: userPlans}, ()=>{
       console.log(this.state.userDaily);
     })
+    for (var i = 0; i < this.state.userDaily.length; i++) {
+      if(this.state.userDaily[i].date == document.getElementById('date').innerText) {
+        var one = this.state.userDaily[i]
+        this.setState({oneDaily: one}, ()=>{
+          console.log(this.state.oneDaily);
+        })
+      }
+    }
   }
 
   dailyDate(){
@@ -44,35 +54,55 @@ class DailyPlan extends Component {
     return today2
   }
 
-  oneDaily() {
-    for (var i = 0; i < this.state.userDaily.length; i++) {
-      if(this.state.userDaily[i].date == document.getElementById('date').innerText) {
-        console.log('YES');
-        return this.state.userDaily[i].plan
-      }else {
-        console.log("NO!");
-      }
-    }
-  }
-
   backOneDay() {
     let date = document.getElementById('date').innerText
     let newDate = date.split('/')
-    let day = newDate[1] - 1
-    document.getElementById('date').innerText = newDate[0]+'/0'+day.toString()+'/'+newDate[2]
-
+    let month = newDate[0]
+    let day = newDate[1]
+    let year = newDate[2]
+    if(newDate[1]>1){
+      day -= 1
+    } else {
+      month -= 1
+      if(month == 1 || month == 3|| month == 5|| month == 7|| month == 8|| month == 10|| month == 12 ){
+        day = 31
+      } else if (month == 2 && year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        day = 29
+      } else {
+        day = 30
+      }
+    }
+    if (month == 1 && day == 1) {
+      year -= 1
+    }
+    if (day.toString().length == 1) {
+      day = '0'+ day.toString()
+    }
+    document.getElementById('date').innerText = month+'/'+day+'/'+year
+    var count = 0
+    for (var i = 0; i < this.state.userDaily.length; i++) {
+      if(this.state.userDaily[i].date == document.getElementById('date').innerText) {
+        count++
+        var one = this.state.userDaily[i]
+        this.setState({oneDaily: one})
+      }
+    }
+    if (count == 0) {
+      var message = "There's no daily plan for this day."
+      this.setState({oneDaily: message})
+    }
   }
 
   render () {
     return (
       <div id="dailyPlanArea">
         <div id="dailyHead">
-          <a onClick={this.backOneDay}><i className="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+          <div onClick={this.backOneDay.bind(this)}><i className="fa fa-arrow-left fa-2x" aria-hidden="true"></i></div>
           <h1 id="date">{this.dailyDate()}</h1>
-          <a onClick=""><i className="fa fa-arrow-right fa-2x" aria-hidden="true"></i></a>
+          <div onClick=""><i className="fa fa-arrow-right fa-2x" aria-hidden="true"></i></div>
         </div>
         <br />
-        <ReactMarkdown source={this.oneDaily()} />
+        <Plan oneDaily={this.state.oneDaily} />
       </div>
     )
   }
