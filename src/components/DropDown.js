@@ -13,11 +13,13 @@ class DropDown extends Component {
            <div className="dropdown-content">
             <a className="topLink" href="#">Edit Profile</a>
             <a href="#">Cohort</a>
-            <a href="#">Members Portal</a>
-            <a href="#">Talent Portal</a>
-            <a href="#">Learn Curriculum</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Github</a>
+            <a href="https://members.galvanize.com/" target="_blank">Members Portal</a>
+            <a href="https://talent.galvanize.com/" target="_blank">Talent Portal</a>
+            <a href="https://learn.galvanize.com/" target="_blank">Learn Curriculum</a>
+            <a href={`https://www.linkedin.com/in/${this.props.user.linkedin_handle
+            }`} target="_blank">LinkedIn</a>
+            <a href={`https://github.com/${this.props.user.github_handle
+            }`} target="_blank">Github</a>
             <a href="#">Student Links</a>
             <a className="bottomLink" href="#"><i class="fa fa-plus" aria-hidden="true"></i> Add Link</a>
            </div>
