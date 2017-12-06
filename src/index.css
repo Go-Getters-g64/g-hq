@@ -183,11 +183,12 @@ select {
 /*DAILY PLAN STYLING*/
 
 #dailyPlanArea {
-  width: 50%;
+  /* width: 50%; */
   margin: 1em;
   padding: 1em;
   background-color: lightgrey;
   border-radius: 5px;
+  /* width: 40%; */
 }
 
 #dailyHead {
@@ -195,4 +196,20 @@ select {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+
+/*container styling that holds both daily plan and variable component*/
+
+.hqMain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+
+/*Variable Component styling*/
+
+.variableComponent {
+  margin: 20px 10px;
+  width: 40%;
 }
