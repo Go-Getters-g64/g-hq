@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DropDown from './DropDown'
+import Meetup from './Meetup'
 import logo2 from '../g2.png';
 
 class HeaderHQ extends Component {

@@ -43,6 +43,13 @@ class App extends Component {
      }
   }
 
+  async meetupApiMount() {
+    const response = await fetch('https://api.meetup.com/find/upcoming_events?key=603d4e54316249506c5935491e2f3f55')
+    const json = await response.json()
+    this.setState({data: json})
+    console.log(this.state.data)
+  }
+
   render() {
     return (
     <Router>
