@@ -179,3 +179,20 @@ select {
 .meetupLink:active .meetup-content {
   display: block;
 }
+
+/*DAILY PLAN STYLING*/
+
+#dailyPlanArea {
+  width: 50%;
+  margin: 1em;
+  padding: 1em;
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+#dailyHead {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
