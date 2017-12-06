@@ -9,20 +9,15 @@ class Register extends Component {
     return (
         <div>
         <a href="/"><Header /></a>
-          <main className="registerMain">
+        <main className="registerMain">
           <h1>Register An Account</h1>
-          <form >
+          
+          <form>
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="name">Name</label>
                 <input className="form-control" placeholder="Your Name" type="text"
                 name="name"/>
-              </div>
-              <div className="form-group col-md-4">
-                <label className="col-form-label" htmlFor="name">Password</label>
-                <input required="required" className="form-control" placeholder="enter password" type="password"
-                name="password"
-                />
               </div>
             </div>
 
@@ -31,11 +26,6 @@ class Register extends Component {
                 <label className="col-form-label" htmlFor="email">Galvanize Email</label>
                 <input required="required" className="form-control" placeholder="example@gmail.com" type="email"
                 name="email"/>
-              </div>
-              <div className="form-group col-md-4">
-                <label className="col-form-label" htmlFor="name">Re-enter Password</label>
-                <input required="required" className="form-control" placeholder="enter password" type="password"
-                name="password"/>
               </div>
             </div>
 
@@ -49,7 +39,6 @@ class Register extends Component {
                   <option value="g75">g75</option>
                 </select>
               </div>
-              <a href="/hq/:id"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
             </div>
 
             <div className="row">
@@ -68,10 +57,27 @@ class Register extends Component {
               </div>
             </div>
 
-        
+            <div className="row">
+              <div className="form-group col-md-4">
+                <label className="col-form-label" htmlFor="name">Password</label>
+                <input required="required" className="form-control" placeholder="enter password" type="password"
+                name="password"/>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="form-group col-md-4">
+                <label className="col-form-label" htmlFor="name">Re-enter Password</label>
+                <input required="required" className="form-control" placeholder="enter password" type="password"
+                name="password"/>
+              </div>
+            </div>
+
+            <a href="/hq/:id"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
+
           </form>
-          </main>
-        </div>
+        </main>
+      </div>
     );
   }
 }

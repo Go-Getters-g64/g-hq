@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import LoginForm from './LoginForm'
-import LoginButtons from './LoginButtons'
+import DropDown from './DropDown'
 import logo2 from '../g2.png';
 
 class Header extends Component {
@@ -10,8 +9,8 @@ class Header extends Component {
   render() {
     return (
         <div>
-          <header>
-          <img className='headerLogo' src={logo2} alt="gHQ"/>
+          <header className='hqHeader'>
+            <img className='headerLogo' src={logo2} alt="gHQ"/>
           </header>
         </div>
     );

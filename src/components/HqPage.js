@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header'
+import HeaderHQ from './HeaderHQ'
+import DropDown from './DropDown'
 import logo2 from '../g2.png';
 
 class HqPage extends Component {
@@ -9,12 +10,10 @@ class HqPage extends Component {
   render() {
     return (
         <div>
-          <header>
-          <img className='headerLogo' src={logo2} alt="gHQ"/>
-          </header>
+          <HeaderHQ />
         </div>
     );
   }
 }
 
-export default Header;
+export default HqPage;
