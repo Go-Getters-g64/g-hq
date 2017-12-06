@@ -7,6 +7,7 @@ class DropDown extends Component {
 
   render() {
     return (
+      // console.log(this.props.user);
       <div>
          <div className="dropdown">
            <button className="dropbtn"><img className='studentPhoto'src="https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA3oAAAAJDAzNjUxYzliLTk5NGQtNGY3Yy05ODdkLTljMWIyZTVmNDQ3ZQ.jpg" alt=""/><i className="fa fa-sort-desc" aria-hidden="true"></i></button>
