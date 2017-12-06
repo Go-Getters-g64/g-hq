@@ -14,7 +14,8 @@ class App extends Component {
     loggedIn: false,
     user: [],
     userCreated: false,
-    loginSuccess: false
+    loginSuccess: false,
+    userExists: false
   }
 }
 
@@ -52,7 +53,16 @@ class App extends Component {
       password: e.target.password.value,
       role: e.target.role.value
     }
-    this.createItem(item)
+    var count = 0;
+    for (var i = 0; i < this.state.data.length; i++) {
+      if (this.state.data[i].email == item.email) {
+        count ++
+      }
+    }
+   if (count > 0) {
+   this.setState({userExists: true})
+    }
+    else { this.createItem(this) }
   }
 
   loginCheck(e) {
@@ -86,9 +96,9 @@ class App extends Component {
     return (
     <Router>
       <div>
-          <Route exact path={"/"} render={(props) => ( this.state.loggedIn ? (<Redirect to={`/hq/${this.state.user.id}`} />) : ( <LandingPage data={this.state.data} loginSuccess={this.state.loginSuccess}userInput={this.loginCheck.bind(this)} />)
+          <Route exact path={"/"} render={(props) => ( this.state.loggedIn ? (<Redirect to={`/hq/${this.state.user.id}`} />) : ( <LandingPage data={this.state.data} loginSuccess={this.state.loginSuccess} userInput={this.loginCheck.bind(this)} />)
           )} />
-          <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />) 
+          <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />) 
           )} />
           <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} />)} />
       </div>

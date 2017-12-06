@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Header from './Header'
+import UserExists from './UserExists'
 
 class Register extends Component {
 
 
 
   render() {
+    console.log(this.props.userExists)
     return (
         <div>
         <a href="/"><Header /></a>
@@ -78,6 +80,7 @@ class Register extends Component {
             <a href="/hq/:id"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
 
           </form>
+          {this.props.userExists ? <UserExists /> : null}
         </main>
       </div>
     );
