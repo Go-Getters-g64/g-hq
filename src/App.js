@@ -49,7 +49,7 @@ class App extends Component {
       <div>
           <Route exact path={"/"} render={(props) => ( this.state.loggedIn ? (<Redirect to={`/hq/${this.state.user.id}`} />) : ( <LandingPage data={this.state.data} userInput={this.loginCheck.bind(this)} />)
           )} />
-          <Route path={"/register"} component={Register} />
+          <Route path={"/register"} render = {(props) => (<Register componentDidMount= {this.componentDidMount.bind(this)} />) } />
           <Route path={"/hq"} component={HqPage} />
       </div>
     </Router>
