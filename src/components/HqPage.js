@@ -10,7 +10,7 @@ class HqPage extends Component {
   render() {
     return (
         <div>
-          <HeaderHQ />
+          <HeaderHQ user={this.props.user} />
         </div>
     );
   }
