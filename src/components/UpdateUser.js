@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import EditInfoSuccess from './EditInfoSuccess'
+import { Redirect } from 'react-router'
 
 class UpdateUser extends Component {
 
 
+
+
   render() {
+    console.log(this.props.redirect)
   return (
       <div>
         <a href="/"></a>
         <main className="registerMain">
           <h1>Update Your Account</h1>
-          
+
           <form onSubmit={this.props.editUser}>
             <div className="row">
               <div className="form-group col-md-4">
@@ -43,9 +47,9 @@ class UpdateUser extends Component {
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="github">Github URL</label>
-                
+
                 <input required="required" id="github_handle" className="form-control editUser" placeholder={this.props.userData.github_handle} type="text" />
-              
+
               </div>
             </div>
 
@@ -68,13 +72,16 @@ class UpdateUser extends Component {
             <input type="hidden" value={this.props.userData.role} id="role"/>
 
             <input type="hidden" value={this.props.userData.id} id="id"/>
-            
-            <button className='registerSubmit btn btn-info' type='submit'>Submit</button>
+
+          <button type='submit' className='registerSubmit btn btn-info' >Submit</button>
 
           </form>
-          <button className='btn btn-info' onClick={this.props.editInfoToggle}>Confirm Change</button>
-            {this.props.editInfo ? <EditInfoSuccess /> : null}
           
+          {this.props.redirect && (
+            <Redirect to={'/'}/>
+          )}
+
+
         </main>
       </div>
     )

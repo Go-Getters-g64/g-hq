@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class MeetupIndividual extends Component {
   render() {
+    
     return (
           <div>
             
@@ -9,7 +10,6 @@ class MeetupIndividual extends Component {
             <h4>Group: {this.props.groupName}</h4>
             <p>Date: {this.props.date}</p>
             <p>Time: {this.props.time}</p>
-            <p>Venue:</p>
           </div>
     );
   }

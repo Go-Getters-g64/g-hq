@@ -7,6 +7,7 @@ import DailyPlan from './DailyPlan'
 import Mastery from './Mastery'
 import CareerServices from './CareerServices'
 import UpdateUser from './UpdateUser'
+import cookie from 'react-cookies'
 
 class HqPage extends Component {
   constructor(props) {
@@ -18,7 +19,10 @@ class HqPage extends Component {
       loggedIn: this.props.loggedIn,
       user: this.props.user,
       editUser: false,
-      editInfo: false
+      signedIn: cookie.load('userInfo'),
+      cookies: cookie.loadAll(),
+      editInfo: false,
+      redirect: this.props.redirect
     }
   }
 
@@ -66,8 +70,10 @@ class HqPage extends Component {
     this.setState({
       meetup: false,
       mastery: false,
-      careerServices: false
+      careerServices: false,
+      redirect: false
     })
+    
   }
 
   toggleEditInfoSuccess = (e) => {
@@ -79,22 +85,24 @@ class HqPage extends Component {
 
 
   render() {
+    
     return (
         <div>
-          <HeaderHQ user={this.props.user}
+          <HeaderHQ redirect={this.props.redirect} user={this.state.signedIn}
             toggleMeetup={this.toggleMeetup}
             toggleMastery={this.toggleMastery}
             toggleCareerServices={this.toggleCareerServices}
             toggleEditUser={this.toggleEditUser}
+            onLogout={this.props.onLogout}
              />
 
             <main class='hqMain'>
-              <DailyPlan user={this.props.user} />
+              <DailyPlan user={this.state.signedIn} />
               <div class='variableComponent'>
                 {this.state.meetup ? <Meetup /> : null}
-                {this.state.mastery ? <Mastery user={this.props.user} /> : null}
-                {this.state.careerServices ? <CareerServices user={this.props.user} /> : null}
-                {this.state.editUser ? <UpdateUser editInfo={this.state.editInfo} editInfoToggle={this.toggleEditInfoSuccess} userData={this.props.user} editUser={this.props.editUser} /> : null}
+                {this.state.mastery ? <Mastery user={this.state.signedIn} /> : null}
+                {this.state.careerServices ? <CareerServices user={this.state.signedIn} /> : null}
+                {this.state.editUser ? <UpdateUser redirect={this.props.redirect} editInfo={this.state.editInfo} editInfoToggle={this.toggleEditInfoSuccess} userData={this.state.signedIn} editUser={this.props.editUser} /> : null}
               </div>
             </main>
         </div>

@@ -3,6 +3,7 @@ import MeetupIndividual from './MeetupIndividual'
 
 class MeetupList extends Component {
   render() {
+    console.log(this.props)        
   return (
     <div>
     <h1>Upcoming Tech-Related Meetups</h1>
