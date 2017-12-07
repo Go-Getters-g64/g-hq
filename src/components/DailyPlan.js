@@ -163,7 +163,7 @@ class DailyPlan extends Component {
           <div onClick={this.forwardOneDay.bind(this)}><i className="fa fa-arrow-right fa-2x" aria-hidden="true"></i></div>
         </div>
         <br />
-        <Plan oneDaily={this.state.oneDaily} />
+        <Plan id="planArea" oneDaily={this.state.oneDaily} />
       </div>
     )
   }
