@@ -100,7 +100,9 @@ class HqPage extends Component {
               <DailyPlan user={this.state.signedIn} />
               <div class='variableComponent'>
                 {this.state.meetup ? <Meetup /> : null}
-                {this.state.mastery ? <Mastery user={this.state.signedIn} /> : null}
+                {this.state.mastery ? <Mastery 
+                addMastery={this.props.addMastery}
+                user={this.state.signedIn} /> : null}
                 {this.state.careerServices ? <CareerServices user={this.state.signedIn} /> : null}
                 {this.state.editUser ? <UpdateUser redirect={this.props.redirect} editInfo={this.state.editInfo} editInfoToggle={this.toggleEditInfoSuccess} userData={this.state.signedIn} editUser={this.props.editUser} /> : null}
               </div>

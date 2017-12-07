@@ -67,6 +67,30 @@ class App extends Component {
     this.setState({loginSuccess: true})
   }
 
+  async postMastery(item) {
+    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/mastery_tracking/submissions', {
+      method: 'POST',
+      body: JSON.stringify(item),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    this.componentDidMount()
+    console.log('success')
+  }
+
+  addMastery(e) {
+    e.preventDefault();
+    let item= {
+      id: e.target.id.value,
+      domain: e.target.domain.value,
+      standard: e.target.standard.value,
+      demonstration: e.target.demonstration.value
+    }
+    this.postMastery(item)
+  }
+
   editUser(e) {
     e.preventDefault();
     let item = {
@@ -148,7 +172,9 @@ class App extends Component {
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />)
           )} />
-          <Route path={"/hq/:id"} render={(props) => ( <HqPage redirect={this.state.fireRedirect} user={this.state.user} onLogout={this.onLogout} loggedIn={this.state.loggedIn}  editUser={this.editUser.bind(this)} />)} />
+          <Route path={"/hq/:id"} render={(props) => ( <HqPage 
+          addMastery = {this.addMastery.bind(this)}
+          redirect={this.state.fireRedirect} user={this.state.user} onLogout={this.onLogout} loggedIn={this.state.loggedIn}  editUser={this.editUser.bind(this)} />)} />
       </div>
     </Router>
     );
