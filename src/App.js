@@ -19,16 +19,17 @@ class App extends Component {
     }
   }
 
-  // async patchItem(item) {
-  //   const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users', {
-  //     method: 'PATCH',
-  //     body: JSON.stringify(item),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //     }
-  //   })
-  // }
+  async putItem(item) {
+    const response = await fetch(`https://blooming-dawn-66637.herokuapp.com/api/hq/${this.state.user.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(item),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    this.setState({user: item})
+  }
 
 
   async componentDidMount() {
@@ -52,6 +53,19 @@ class App extends Component {
     this.setState({loginSuccess: true})
   }
 
+  editUser(e) {
+    e.preventDefault();
+    let item = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      cohort: e.target.cohort.value,
+      github_handle: e.target.github_handle.value,
+      linkedin_handle: e.target.linkedin_handle.value,
+      password: e.target.password.value,
+      role: e.target.role.value
+    }
+    this.putItem(item) 
+  }
 
 
   registerUser(e) {
@@ -74,7 +88,7 @@ class App extends Component {
    if (count > 0) {
    this.setState({userExists: true})
     }
-    else { this.createItem(this) }
+    else { this.createItem(item) }
   }
 
   loginCheck(e) {
@@ -90,10 +104,11 @@ class App extends Component {
          // console.log('success!')
          // console.log(userData);
          this.setState({user: this.state.data[i]}, () => {
-           console.log(this.state.user);
          })
 
-         this.setState({loggedIn: true})
+         this.setState({
+           loggedIn: true,
+        })
        }
      }
   }
@@ -115,7 +130,7 @@ class App extends Component {
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />)
           )} />
-          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} loggedIn={this.state.loggedIn} />)} />
+          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} loggedIn={this.state.loggedIn} editUser={this.editUser.bind(this)} />)} />
       </div>
     </Router>
     );

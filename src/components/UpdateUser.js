@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import MeetupIndividual from './MeetupIndividual'
+import EditInfoSuccess from './EditInfoSuccess'
 
-class MeetupList extends Component {
+class UpdateUser extends Component {
+
+
   render() {
   return (
       <div>
@@ -9,11 +11,11 @@ class MeetupList extends Component {
         <main className="registerMain">
           <h1>Update Your Account</h1>
           
-          <form>
+          <form onSubmit={this.props.editUser}>
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="name">Name</label>
-                <input className="form-control editUser" id ="name" placeholder="Your Name" type="text"
+                <input className="form-control editUser" id ="name" placeholder={this.props.userData.name} type="text"
                 name="name"/>
               </div>
             </div>
@@ -21,7 +23,7 @@ class MeetupList extends Component {
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="email">Galvanize Email</label>
-                <input required="required" id ="email" className="form-control editUser" placeholder="example@gmail.com" type="email"
+                <input required="required" id ="email" className="form-control editUser" placeholder={this.props.userData.email} type="email"
                 name="email"/>
               </div>
             </div>
@@ -30,8 +32,8 @@ class MeetupList extends Component {
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="cohort">Galvanize Cohort</label>
                 <select className="form-control editUser" name="cohort" id="cohort">
-                  <option selected>Choose Your Cohort</option>
-                  <option value="1">g64</option>
+                  <option>Choose Your Cohort</option>
+                  <option selected value="1">g64</option>
                   <option value="2">g70</option>
                   <option value="3">g75</option>
                 </select>
@@ -42,7 +44,7 @@ class MeetupList extends Component {
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="github">Github URL</label>
                 
-                <input required="required" id="github_handle" className="form-control editUser" placeholder="http://www.github.com/example <-- just the handle" type="text" />
+                <input required="required" id="github_handle" className="form-control editUser" placeholder={this.props.userData.github_handle} type="text" />
               
               </div>
             </div>
@@ -50,7 +52,7 @@ class MeetupList extends Component {
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="linkedin">LinkedIn URL</label>
-                <input required="required" id = "linkedin_handle" className="form-control editUser" placeholder="http://www.linkedin.com/in/example <-- just the handle" type="text"
+                <input required="required" id = "linkedin_handle" className="form-control editUser" placeholder={this.props.userData.linkedin_handle} type="text"
                 name="linkedin"/>
               </div>
             </div>
@@ -58,20 +60,25 @@ class MeetupList extends Component {
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="name">Password</label>
-                <input required="required" id="password" className="form-control editUser" placeholder="enter password" type="password"
+                <input required="required" id="password" className="form-control editUser" placeholder={this.props.userData.password} type="password"
                 name="password"/>
               </div>
             </div>
 
-            <input type="hidden" value="student" id="role"/>
+            <input type="hidden" value={this.props.userData.role} id="role"/>
+
+            <input type="hidden" value={this.props.userData.id} id="id"/>
             
-            <a href="/hq/:id"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
+            <button className='registerSubmit btn btn-info' type='submit'>Submit</button>
 
           </form>
+          <button className='btn btn-info' onClick={this.props.editInfoToggle}>Confirm Change</button>
+            {this.props.editInfo ? <EditInfoSuccess /> : null}
+          
         </main>
       </div>
     )
   }
 }
 
-export default MeetupList;
+export default UpdateUser;

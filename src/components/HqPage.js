@@ -17,7 +17,8 @@ class HqPage extends Component {
       careerServices: false,
       loggedIn: this.props.loggedIn,
       user: this.props.user,
-      editUser: false
+      editUser: false,
+      editInfo: false
     }
   }
 
@@ -28,7 +29,8 @@ class HqPage extends Component {
     }
     this.setState({
       mastery: false,
-      careerServices: false
+      careerServices: false,
+      editUser: false
     })
   }
 
@@ -68,8 +70,15 @@ class HqPage extends Component {
     })
   }
 
+  toggleEditInfoSuccess = (e) => {
+    e.preventDefault()
+    if (this.state.editInfo===false) {
+    this.setState({ editInfo:true })
+    }
+  }
+
+
   render() {
-    console.log(this.props.user);
     return (
         <div>
           <HeaderHQ user={this.props.user}
@@ -85,7 +94,7 @@ class HqPage extends Component {
                 {this.state.meetup ? <Meetup /> : null}
                 {this.state.mastery ? <Mastery user={this.props.user} /> : null}
                 {this.state.careerServices ? <CareerServices user={this.props.user} /> : null}
-                {this.state.editUser ? <UpdateUser /> : null}
+                {this.state.editUser ? <UpdateUser editInfo={this.state.editInfo} editInfoToggle={this.toggleEditInfoSuccess} userData={this.props.user} editUser={this.props.editUser} /> : null}
               </div>
             </main>
         </div>
