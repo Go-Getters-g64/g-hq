@@ -18,7 +18,7 @@ class App extends Component {
     userExists: false
     }
   }
-  
+
   async componentDidMount() {
     const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users')
     const json = await response.json()
@@ -103,7 +103,7 @@ class App extends Component {
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />)
           )} />
-          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user}/>)} />
+          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} loggedIn={this.state.loggedIn} />)} />
       </div>
     </Router>
     );

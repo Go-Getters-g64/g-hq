@@ -13,7 +13,9 @@ class HqPage extends Component {
     this.state = {
       meetup: false,
       mastery: false,
-      careerServices: false
+      careerServices: false,
+      loggedIn: this.props.loggedIn,
+      user: this.props.user
     }
   }
 
@@ -61,9 +63,7 @@ class HqPage extends Component {
              />
 
             <main class='hqMain'>
-              <div>
-                <DailyPlan user={this.props.user} />
-              </div>            
+              <DailyPlan user={this.props.user} />
               <div class='variableComponent'>
                 {this.state.meetup ? <Meetup /> : null}
                 {this.state.mastery ? <Mastery user={this.props.user} /> : null}
