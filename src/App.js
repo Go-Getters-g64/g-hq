@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage'
 import Register from './components/Register'
 import HqPage from './components/HqPage'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import cookie from 'react-cookies'
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class App extends Component {
     user: [],
     userCreated: false,
     loginSuccess: false,
-    userExists: false
+    userExists: false,
+    cookies: cookie.loadAll(),
+    signedIn: cookie.load('userInfo')
     }
   }
 
@@ -30,6 +33,10 @@ class App extends Component {
   //   })
   // }
 
+  onLogout() {
+    cookie.remove('userInfo', { path: '/' })
+
+  }
 
   async componentDidMount() {
     const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users')
@@ -90,10 +97,12 @@ class App extends Component {
          // console.log('success!')
          // console.log(userData);
          this.setState({user: this.state.data[i]}, () => {
-           console.log(this.state.user);
+           // console.log(this.state.user);
+           cookie.save('userInfo', this.state.user, { path: '/' })
+           this.setState({ signedIn: cookie.load('userInfo')})
+           this.setState({loggedIn: true})
          })
 
-         this.setState({loggedIn: true})
        }
      }
   }
@@ -102,20 +111,21 @@ class App extends Component {
     const response = await fetch('https://api.meetup.com/find/upcoming_events?key=603d4e54316249506c5935491e2f3f55')
     const json = await response.json()
     this.setState({data: json})
-    console.log(this.state.data)
+    // console.log(this.state.data)
   }
 
 
-
   render() {
+    console.log(this.state.signedIn);
+    console.log(this.state.loggedIn);
     return (
     <Router>
       <div>
-          <Route exact path={"/"} render={(props) => ( this.state.loggedIn ? (<Redirect to={`/hq/${this.state.user.id}`} />) : ( <LandingPage data={this.state.data} loginSuccess={this.state.loginSuccess} userInput={this.loginCheck.bind(this)} />)
+          <Route exact path={"/"} render={(props) => ( this.state.loggedIn || this.state.signedIn !== undefined ? (<Redirect to={`/hq/${this.state.signedIn.id}`} />) : ( <LandingPage data={this.state.data} loginSuccess={this.state.loginSuccess} userInput={this.loginCheck.bind(this)} />)
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />)
           )} />
-          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} loggedIn={this.state.loggedIn} />)} />
+          <Route path={"/hq/:id"} render={(props) => ( <HqPage user={this.state.user} onLogout={this.onLogout} loggedIn={this.state.loggedIn}  />)} />
       </div>
     </Router>
     );

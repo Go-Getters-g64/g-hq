@@ -5,7 +5,6 @@ import logo2 from '../g2.png';
 class HeaderHQ extends Component {
 
 
-
   render() {
 
     return (
@@ -21,7 +20,7 @@ class HeaderHQ extends Component {
             <a onClick={this.props.toggleCareerServices}className='appButtons'>Career Services <i className="fa fa-briefcase" aria-hidden="true"></i></a>
             <a onClick={this.props.toggleMastery}className='appButtons'>Mastery <i className="fa fa-graduation-cap" aria-hidden="true"></i></a>
             <a className='appButtons'>Slack <i className="fa fa-slack" aria-hidden="true"></i></a>
-            <button className='logOutButton'>Log Out</button>
+            <a href="/"><button onClick={this.props.onLogout} className='logOutButton'> Log Out</button></a>
           </div>
           </header>
         </div>
