@@ -4,7 +4,7 @@ class CareerServices extends Component {
   render() {
     return (
           <div>
-            <h2>Career Services</h2>
+            <h1>Career Services</h1>
               <form action="">
               <label className="col-form-label" htmlFor="name">Name</label>
               <input required='required' className="form-control" id ="name" value={this.props.user.name} type="text"

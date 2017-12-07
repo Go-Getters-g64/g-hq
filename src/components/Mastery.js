@@ -5,7 +5,7 @@ class Mastery extends Component {
     console.log(this.props.user)
     return (
           <div>
-            <h2>Mastery Tracking</h2>
+            <h1>Mastery Tracking</h1>
               <form action="">
               <label className="col-form-label" htmlFor="name">Name</label>
               <input required='required' className="form-control" id ="name" value={this.props.user.name} type="text"
