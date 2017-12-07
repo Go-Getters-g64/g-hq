@@ -212,7 +212,7 @@ select {
 /*Variable Component styling*/
 
 .variableComponent {
-  margin: 20px 10px 0px -30px;
+  margin: 0px 10px 0px -30px;
   padding: 10px 10px;
   width: 45%;
   overflow: scroll;
