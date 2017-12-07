@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
+import cookie from 'react-cookies'
 
 
 class DropDown extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      signedIn: cookie.load('userInfo'),
+    }
+  }
 
+  findFirstLetter() {
+    return this.state.signedIn.name.charAt(0)
 
+  }
 
   render() {
     return (
       // console.log(this.props.user);
       <div>
          <div className="dropdown">
-           <button className="dropbtn"><img className='studentPhoto'src="https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA3oAAAAJDAzNjUxYzliLTk5NGQtNGY3Yy05ODdkLTljMWIyZTVmNDQ3ZQ.jpg" alt=""/><i className="fa fa-sort-desc" aria-hidden="true"></i></button>
+           <button className="dropbtn"><h1 id="userFirstLetter">{this.findFirstLetter()}</h1><i className="fa fa-sort-desc" aria-hidden="true"></i></button>
            <div className="dropdown-content">
             <a onClick={this.props.toggleEditUser}className="topLink" href="#">Edit Profile</a>
             <a href="#">Cohort</a>
