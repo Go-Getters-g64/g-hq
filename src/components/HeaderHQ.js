@@ -4,8 +4,6 @@ import logo2 from '../g2.png';
 
 class HeaderHQ extends Component {
 
- 
-
   render() {
 
     return (
