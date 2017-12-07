@@ -12,7 +12,7 @@ class HeaderHQ extends Component {
         <div>
           <header className='hqHeader'>
           <img className='headerLogo' src={logo2} alt="gHQ"/>
-          <DropDown user={this.props.user}/>
+          <DropDown toggleEditUser={this.props.toggleEditUser} user={this.props.user}/>
 
           <div className='appButtonContainer'>
 

@@ -12,7 +12,7 @@ class Mastery extends Component {
               name="name"/>
               
               <label className="col-form-label" htmlFor="cohort">What DOMAIN does this MT standard fall under?</label>
-              <select required='required' className="form-control" name="cohort" id="cohort">
+              <select required='required' className="form-control" name="domain" id="domain">
                 <option selected>Choose A Domain</option>
                 <option value="Applied Technical Skills">Applied Technical Skills</option>
                 <option value="Experience and Exposure">Experience and Exposure</option>

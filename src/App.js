@@ -19,6 +19,18 @@ class App extends Component {
     }
   }
 
+  // async patchItem(item) {
+  //   const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users', {
+  //     method: 'PATCH',
+  //     body: JSON.stringify(item),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //     }
+  //   })
+  // }
+
+
   async componentDidMount() {
     const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users')
     const json = await response.json()
