@@ -6,14 +6,16 @@ import logo2 from '../g2.png';
 import DailyPlan from './DailyPlan'
 import Mastery from './Mastery'
 import CareerServices from './CareerServices'
+import UpdateUser from './UpdateUser'
 
 class HqPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      meetup: false,
+      meetup: true,
       mastery: false,
-      careerServices: false
+      careerServices: false,
+      editUser: false
     }
   }
 
@@ -35,7 +37,8 @@ class HqPage extends Component {
     }
     this.setState({
       meetup: false,
-      careerServices: false
+      careerServices: false,
+      editUser: false
     })
   }
 
@@ -46,7 +49,20 @@ class HqPage extends Component {
     }
     this.setState({
       meetup: false,
-      mastery: false
+      mastery: false,
+      editUser: false
+    })
+  }
+
+  toggleEditUser = (e) => {
+    e.preventDefault()
+    if (this.state.careerServices === false) {
+      this.setState({editUser: true})
+    }
+    this.setState({
+      meetup: false,
+      mastery: false,
+      careerServices: false
     })
   }
 
@@ -58,6 +74,7 @@ class HqPage extends Component {
             toggleMeetup={this.toggleMeetup}
             toggleMastery={this.toggleMastery}
             toggleCareerServices={this.toggleCareerServices}
+            toggleEditUser={this.toggleEditUser}
              />
 
             <main class='hqMain'>
@@ -68,6 +85,7 @@ class HqPage extends Component {
                 {this.state.meetup ? <Meetup /> : null}
                 {this.state.mastery ? <Mastery user={this.props.user} /> : null}
                 {this.state.careerServices ? <CareerServices user={this.props.user} /> : null}
+                {this.state.editUser ? <UpdateUser /> : null}
               </div>
             </main>
         </div>
