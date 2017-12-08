@@ -13,7 +13,7 @@ class DailyPlan extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/daily')
+    const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/daily')
     const json = await response.json()
     this.setState({daily: json})
     // console.log(this.state.daily)

@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   async putItem(item) {
-    const response = await fetch(`https://secret-savannah-78566.herokuapp.com/api/hq/${this.state.user.id}`, {
+    const response = await fetch(`https://radiant-depths-28199.herokuapp.com/api/hq/${this.state.user.id}`, {
       method: 'PUT',
       body: JSON.stringify(item),
       headers: {
@@ -47,14 +47,14 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('https://secret-savannah-78566.herokuapp.com/api/users')
+    const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/users')
     const json = await response.json()
     this.setState({data: json})
     // console.log(this.state.data)
   }
 
   async createItem(item) {
-    const response = await fetch('https://secret-savannah-78566.herokuapp.com/api/users/new', {
+    const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/users/new', {
       method: 'POST',
       body: JSON.stringify(item),
       headers: {
@@ -69,7 +69,7 @@ class App extends Component {
 
   async postMastery(item) {
     console.log('post mastery')
-    const response = await fetch('https://secret-savannah-78566.herokuapp.com/api/mastery_tracking/submissions', {
+    const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/mastery_tracking/submissions', {
       method: 'POST',
       body: JSON.stringify(item),
       headers: {
@@ -77,7 +77,6 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    // this.componentDidMount()
     console.log('success')
   }
 
@@ -166,7 +165,7 @@ class App extends Component {
   render() {
     // console.log(this.state.signedIn);
     // console.log(this.state.loggedIn);
-    
+
     return (
     <Router>
       <div>
@@ -174,7 +173,7 @@ class App extends Component {
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />)
           )} />
-          <Route path={"/hq/:id"} render={(props) => ( <HqPage 
+          <Route path={"/hq/:id"} render={(props) => ( <HqPage
           addMastery = {this.addMastery.bind(this)}
           redirect={this.state.fireRedirect} user={this.state.user} onLogout={this.onLogout} loggedIn={this.state.loggedIn}  editUser={this.editUser.bind(this)} />)} />
       </div>
