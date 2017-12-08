@@ -61,9 +61,10 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    // this.componentDidMount()
+    this.componentDidMount()
     this.setState({userCreated: true})
     this.setState({loginSuccess: true})
+    
   }
 
   async postMastery(item) {
@@ -139,11 +140,14 @@ class App extends Component {
        if(this.state.data[i].email === userData.email && this.state.data[i].password === userData.password) {
          // console.log('success!')
          // console.log(userData);
-         this.setState({user: this.state.data[i]}, () => {
+         this.setState({ userCreated: false,
+           user: this.state.data[i]}, () => {
            // console.log(this.state.user);
            cookie.save('userInfo', this.state.user, { path: '/' })
            this.setState({ signedIn: cookie.load('userInfo')})
-           this.setState({loggedIn: true})
+           this.setState({
+             loggedIn: true
+          })
          })
 
        }

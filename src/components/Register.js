@@ -7,7 +7,7 @@ class Register extends Component {
 
 
   render() {
-    console.log(this.props.userExists)
+    
     return (
         <div>
         <a href="/"><Header /></a>
