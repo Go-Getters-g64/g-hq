@@ -4,7 +4,7 @@ class MeetupIndividual extends Component {
   render() {
     
     return (
-          <div>
+          <div className='cohortMembers'>
             
             <h2>{this.props.eventName}</h2>
             <h4>Group: {this.props.groupName}</h4>

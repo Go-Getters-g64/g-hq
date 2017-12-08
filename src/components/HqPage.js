@@ -8,6 +8,7 @@ import Mastery from './Mastery'
 import CareerServices from './CareerServices'
 import UpdateUser from './UpdateUser'
 import cookie from 'react-cookies'
+import Cohort from './Cohort'
 
 class HqPage extends Component {
   constructor(props) {
@@ -16,9 +17,10 @@ class HqPage extends Component {
       meetup: true,
       mastery: false,
       careerServices: false,
+      editUser: false,
+      cohort: false,
       loggedIn: this.props.loggedIn,
       user: this.props.user,
-      editUser: false,
       signedIn: cookie.load('userInfo'),
       cookies: cookie.loadAll(),
       editInfo: false,
@@ -34,7 +36,8 @@ class HqPage extends Component {
     this.setState({
       mastery: false,
       careerServices: false,
-      editUser: false
+      editUser: false,
+      cohort: false
     })
   }
 
@@ -46,7 +49,8 @@ class HqPage extends Component {
     this.setState({
       meetup: false,
       careerServices: false,
-      editUser: false
+      editUser: false,
+      cohort: false,
     })
   }
 
@@ -58,7 +62,8 @@ class HqPage extends Component {
     this.setState({
       meetup: false,
       mastery: false,
-      editUser: false
+      editUser: false,
+      cohort: false
     })
   }
 
@@ -71,7 +76,8 @@ class HqPage extends Component {
       meetup: false,
       mastery: false,
       careerServices: false,
-      redirect: false
+      redirect: false,
+      cohort: false
     })
     
   }
@@ -83,6 +89,20 @@ class HqPage extends Component {
     }
   }
 
+  toggleCohort = (e) => {
+    e.preventDefault()
+    if (this.state.cohort===false) {
+    this.setState({ cohort:true })
+    }
+    this.setState({
+      meetup: false,
+      mastery: false,
+      careerServices: false,
+      editUser: false
+    })
+  }
+
+
 
   render() {
     
@@ -93,6 +113,7 @@ class HqPage extends Component {
             toggleMastery={this.toggleMastery}
             toggleCareerServices={this.toggleCareerServices}
             toggleEditUser={this.toggleEditUser}
+            toggleCohort={this.toggleCohort}
             onLogout={this.props.onLogout}
              />
 
@@ -105,6 +126,7 @@ class HqPage extends Component {
                 user={this.state.signedIn} /> : null}
                 {this.state.careerServices ? <CareerServices user={this.state.signedIn} /> : null}
                 {this.state.editUser ? <UpdateUser redirect={this.props.redirect} editInfo={this.state.editInfo} editInfoToggle={this.toggleEditInfoSuccess} userData={this.state.signedIn} editUser={this.props.editUser} /> : null}
+                {this.state.cohort ? <Cohort user={this.props.user} /> : null }
               </div>
             </main>
         </div>

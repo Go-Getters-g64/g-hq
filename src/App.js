@@ -50,7 +50,6 @@ class App extends Component {
     const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/users')
     const json = await response.json()
     this.setState({data: json})
-    // console.log(this.state.data)
   }
 
   async createItem(item) {

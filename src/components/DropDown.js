@@ -23,7 +23,7 @@ class DropDown extends Component {
            <button className="dropbtn"><h1 id="userFirstLetter">{this.findFirstLetter()}</h1><i className="fa fa-sort-desc" aria-hidden="true"></i></button>
            <div className="dropdown-content">
             <a onClick={this.props.toggleEditUser}className="topLink" href="#">Edit Profile</a>
-            <a href="#">Cohort</a>
+            <a onClick={this.props.toggleCohort} href="#">Cohort</a>
             <a href="https://members.galvanize.com/" target="_blank">Members Portal</a>
             <a href="https://talent.galvanize.com/" target="_blank">Talent Portal</a>
             <a href="https://learn.galvanize.com/" target="_blank">Learn Curriculum</a>
