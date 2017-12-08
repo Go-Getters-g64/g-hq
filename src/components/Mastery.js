@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Mastery extends Component {
   render() {
     return (
-          <div className='cohortMembers'>
+          <div>
             <h1>Mastery Tracking</h1>
               <form onSubmit={this.props.addMastery}>
               {/* <label className="col-form-label" htmlFor="name">Name</label> */}
