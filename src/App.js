@@ -67,7 +67,6 @@ class App extends Component {
   }
 
   async postMastery(item) {
-    console.log('post mastery')
     const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/mastery_tracking/submissions', {
       method: 'POST',
       body: JSON.stringify(item),
@@ -76,7 +75,6 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    console.log('success')
   }
 
   addMastery(e) {
@@ -87,7 +85,6 @@ class App extends Component {
       standard: e.target.standard.value,
       demonstration: e.target.demonstration.value
     }
-    console.log(item)
     this.postMastery(item)
   }
 
