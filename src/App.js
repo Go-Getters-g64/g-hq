@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   async putItem(item) {
-    const response = await fetch(`https://blooming-dawn-66637.herokuapp.com/api/hq/${this.state.user.id}`, {
+    const response = await fetch(`https://radiant-depths-28199.herokuapp.com/api/hq/${this.state.user.id}`, {
       method: 'PUT',
       body: JSON.stringify(item),
       headers: {
@@ -47,14 +47,13 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users')
+    const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/users')
     const json = await response.json()
     this.setState({data: json})
-    // console.log(this.state.data)
   }
 
   async createItem(item) {
-    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users/new', {
+    const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/users/new', {
       method: 'POST',
       body: JSON.stringify(item),
       headers: {
@@ -65,6 +64,29 @@ class App extends Component {
     this.componentDidMount()
     this.setState({userCreated: true})
     this.setState({loginSuccess: true})
+    
+  }
+
+  async postMastery(item) {
+    const response = await fetch('https://radiant-depths-28199.herokuapp.com/api/mastery_tracking/submissions', {
+      method: 'POST',
+      body: JSON.stringify(item),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+  }
+
+  addMastery(e) {
+    e.preventDefault();
+    let item= {
+      user_id: e.target.user_id.value,
+      domain: e.target.domain.value,
+      standard: e.target.standard.value,
+      demonstration: e.target.demonstration.value
+    }
+    this.postMastery(item)
   }
 
   editUser(e) {
@@ -118,11 +140,14 @@ class App extends Component {
        if(this.state.data[i].email === userData.email && this.state.data[i].password === userData.password) {
          // console.log('success!')
          // console.log(userData);
-         this.setState({user: this.state.data[i]}, () => {
+         this.setState({ userCreated: false,
+           user: this.state.data[i]}, () => {
            // console.log(this.state.user);
            cookie.save('userInfo', this.state.user, { path: '/' })
            this.setState({ signedIn: cookie.load('userInfo')})
-           this.setState({loggedIn: true})
+           this.setState({
+             loggedIn: true
+          })
          })
 
        }
@@ -140,7 +165,7 @@ class App extends Component {
   render() {
     // console.log(this.state.signedIn);
     // console.log(this.state.loggedIn);
-    
+
     return (
     <Router>
       <div>
@@ -148,7 +173,9 @@ class App extends Component {
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />)
           )} />
-          <Route path={"/hq/:id"} render={(props) => ( <HqPage redirect={this.state.fireRedirect} user={this.state.user} onLogout={this.onLogout} loggedIn={this.state.loggedIn}  editUser={this.editUser.bind(this)} />)} />
+          <Route path={"/hq/:id"} render={(props) => ( <HqPage
+          addMastery = {this.addMastery.bind(this)}
+          redirect={this.state.fireRedirect} user={this.state.user} onLogout={this.onLogout} loggedIn={this.state.loggedIn}  editUser={this.editUser.bind(this)} />)} />
       </div>
     </Router>
     );

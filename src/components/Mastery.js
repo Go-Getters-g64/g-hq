@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 
 class Mastery extends Component {
   render() {
-    console.log(this.props.user)
     return (
           <div>
             <h1>Mastery Tracking</h1>
-              <form action="">
-              <label className="col-form-label" htmlFor="name">Name</label>
-              <input required='required' className="form-control" id ="name" value={this.props.user.name} type="text"
-              name="name"/>
+              <form onSubmit={this.props.addMastery}>
+              {/* <label className="col-form-label" htmlFor="name">Name</label> */}
+              <input required='required' className="form-control" id ="user_id" value={this.props.user.id} type="hidden"/>
               
               <label className="col-form-label" htmlFor="cohort">What DOMAIN does this MT standard fall under?</label>
               <select required='required' className="form-control" name="domain" id="domain">
@@ -23,13 +21,13 @@ class Mastery extends Component {
               </select>
 
               <label className="col-form-label" htmlFor="standard">What is the Standard?</label>
-              <input required='required' className="form-control" id ="standard" value="" type="text"
+              <input required='required' className="form-control" id ="standard" type="text"
               name="name"/>
 
               <label className="col-form-label" htmlFor="link">Please add your demonstration of this standard below (link, answers, project, etc.):</label>
-              <input required='required'className="form-control" id ="link" value="" type="text"
+              <input required='required'className="form-control" id ="demonstration" type="text"
               name="name"/>
-              <a href="#"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
+              <button className='registerSubmit btn btn-info' type='submit'>Submit</button>
             </form>
           </div>
     );
