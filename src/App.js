@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   async putItem(item) {
-    const response = await fetch(`https://blooming-dawn-66637.herokuapp.com/api/hq/${this.state.user.id}`, {
+    const response = await fetch(`https://secret-savannah-78566.herokuapp.com/api/hq/${this.state.user.id}`, {
       method: 'PUT',
       body: JSON.stringify(item),
       headers: {
@@ -47,14 +47,14 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users')
+    const response = await fetch('https://secret-savannah-78566.herokuapp.com/api/users')
     const json = await response.json()
     this.setState({data: json})
     // console.log(this.state.data)
   }
 
   async createItem(item) {
-    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/api/users/new', {
+    const response = await fetch('https://secret-savannah-78566.herokuapp.com/api/users/new', {
       method: 'POST',
       body: JSON.stringify(item),
       headers: {
@@ -62,13 +62,14 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    this.componentDidMount()
+    // this.componentDidMount()
     this.setState({userCreated: true})
     this.setState({loginSuccess: true})
   }
 
   async postMastery(item) {
-    const response = await fetch('https://blooming-dawn-66637.herokuapp.com/mastery_tracking/submissions', {
+    console.log('post mastery')
+    const response = await fetch('https://secret-savannah-78566.herokuapp.com/api/mastery_tracking/submissions', {
       method: 'POST',
       body: JSON.stringify(item),
       headers: {
@@ -76,7 +77,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    this.componentDidMount()
+    // this.componentDidMount()
     console.log('success')
   }
 
@@ -88,6 +89,7 @@ class App extends Component {
       standard: e.target.standard.value,
       demonstration: e.target.demonstration.value
     }
+    console.log(item)
     this.postMastery(item)
   }
 

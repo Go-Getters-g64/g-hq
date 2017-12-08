@@ -77,7 +77,7 @@ class Register extends Component {
 
             <input type="hidden" value="student" id="role"/>
 
-            <a href="/hq/:id"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
+            <button className='registerSubmit btn btn-info' type='submit'>Submit</button>
 
           </form>
           {this.props.userExists ? <UserExists /> : null}

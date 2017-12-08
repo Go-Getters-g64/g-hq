@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Mastery extends Component {
   render() {
-    console.log(this.props.user)
     return (
           <div>
             <h1>Mastery Tracking</h1>
@@ -28,7 +27,7 @@ class Mastery extends Component {
               <label className="col-form-label" htmlFor="link">Please add your demonstration of this standard below (link, answers, project, etc.):</label>
               <input required='required'className="form-control" id ="demonstration" type="text"
               name="name"/>
-              <a href="#"><button className='registerSubmit btn btn-info' type='submit'>Submit</button></a>
+              <button className='registerSubmit btn btn-info' type='submit'>Submit</button>
             </form>
           </div>
     );
