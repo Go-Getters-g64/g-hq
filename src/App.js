@@ -82,7 +82,7 @@ class App extends Component {
   addMastery(e) {
     e.preventDefault();
     let item= {
-      id: e.target.id.value,
+      user_id: e.target.user_id.value,
       domain: e.target.domain.value,
       standard: e.target.standard.value,
       demonstration: e.target.demonstration.value

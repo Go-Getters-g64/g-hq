@@ -7,7 +7,7 @@ class Mastery extends Component {
             <h1>Mastery Tracking</h1>
               <form onSubmit={this.props.addMastery}>
               {/* <label className="col-form-label" htmlFor="name">Name</label> */}
-              <input required='required' className="form-control" id ="id" value={this.props.user.id} type="hidden"/>
+              <input required='required' className="form-control" id ="user_id" value={this.props.user.id} type="hidden"/>
               
               <label className="col-form-label" htmlFor="cohort">What DOMAIN does this MT standard fall under?</label>
               <select required='required' className="form-control" name="domain" id="domain">
