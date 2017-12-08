@@ -61,7 +61,7 @@ class App extends Component {
         'Accept': 'application/json',
       }
     })
-    // this.componentDidMount()
+    this.componentDidMount()
     this.setState({userCreated: true})
     this.setState({loginSuccess: true})
   }
