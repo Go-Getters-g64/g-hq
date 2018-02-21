@@ -3,17 +3,13 @@ import Header from './Header'
 import UserExists from './UserExists'
 
 class Register extends Component {
-
-
-
   render() {
-    
     return (
-        <div>
+      <div>
         <a href="/"><Header /></a>
         <main className="registerMain">
           <h1>Register An Account</h1>
-          
+
           <form onSubmit={this.props.registerUser}>
             <div className="row">
               <div className="form-group col-md-4">
@@ -46,9 +42,7 @@ class Register extends Component {
             <div className="row">
               <div className="form-group col-md-4">
                 <label className="col-form-label" htmlFor="github">Github URL</label>
-                
                 <input required="required" id="github_handle" className="form-control" placeholder="http://www.github.com/example <-- just the handle" type="text" />
-              
               </div>
             </div>
 
@@ -68,17 +62,8 @@ class Register extends Component {
               </div>
             </div>
 
-            {/* <div className="row">
-              <div className="form-group col-md-4">
-                <label className="col-form-label" htmlFor="name">Re-enter Password</label>
-                <input required="required" className="form-control" placeholder="enter password" type="password"/>
-              </div>
-            </div> */}
-
             <input type="hidden" value="student" id="role"/>
-
             <button className='registerSubmit btn btn-info' type='submit'>Submit</button>
-
           </form>
           {this.props.userExists ? <UserExists /> : null}
         </main>

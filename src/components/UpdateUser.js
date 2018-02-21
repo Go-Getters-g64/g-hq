@@ -3,13 +3,8 @@ import EditInfoSuccess from './EditInfoSuccess'
 import { Redirect } from 'react-router'
 
 class UpdateUser extends Component {
-
-
-
-
   render() {
-    console.log(this.props.redirect)
-  return (
+    return (
       <div>
         <a href="/"></a>
         <main className="registerMain">
@@ -70,18 +65,13 @@ class UpdateUser extends Component {
             </div>
 
             <input type="hidden" value={this.props.userData.role} id="role"/>
-
             <input type="hidden" value={this.props.userData.id} id="id"/>
-
-          <button type='submit' className='registerSubmit btn btn-info' >Submit</button>
+            <button type='submit' className='registerSubmit btn btn-info' >Submit</button>
 
           </form>
-          
           {this.props.redirect && (
             <Redirect to={'/'}/>
           )}
-
-
         </main>
       </div>
     )

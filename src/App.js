@@ -64,7 +64,7 @@ class App extends Component {
     this.componentDidMount()
     this.setState({userCreated: true})
     this.setState({loginSuccess: true})
-    
+
   }
 
   async postMastery(item) {
@@ -103,7 +103,6 @@ class App extends Component {
     }
     this.putItem(item)
   }
-
 
   registerUser(e) {
     e.preventDefault();
@@ -158,17 +157,12 @@ class App extends Component {
     const response = await fetch('https://api.meetup.com/find/upcoming_events?key=603d4e54316249506c5935491e2f3f55')
     const json = await response.json()
     this.setState({data: json})
-    // console.log(this.state.data)
   }
 
-
   render() {
-    // console.log(this.state.signedIn);
-    // console.log(this.state.loggedIn);
-
     return (
-    <Router>
-      <div>
+      <Router>
+        <div>
           <Route exact path={"/"} render={(props) => ( this.state.loggedIn || this.state.signedIn !== undefined ? (<Redirect to={`/hq/${this.state.signedIn.id}`} />) : ( <LandingPage data={this.state.data} loginSuccess={this.state.loginSuccess} userInput={this.loginCheck.bind(this)} />)
           )} />
           <Route path={"/register"} render = {(props) => ( this.state.userCreated ? (<Redirect to={'/'} />) : ( <Register userExists={this.state.userExists} componentDidMount= {this.componentDidMount.bind(this)} registerUser = {this.registerUser.bind(this)} />)
@@ -176,8 +170,8 @@ class App extends Component {
           <Route path={"/hq/:id"} render={(props) => ( <HqPage
           addMastery = {this.addMastery.bind(this)}
           redirect={this.state.fireRedirect} user={this.state.user} onLogout={this.onLogout} loggedIn={this.state.loggedIn}  editUser={this.editUser.bind(this)} />)} />
-      </div>
-    </Router>
+        </div>
+      </Router>
     );
   }
 }
