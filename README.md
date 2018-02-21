@@ -1,6 +1,6 @@
 # gHQ: The gStudent Portal
 
-[Deployed site](https://galvanize-hq.firebaseapp.com/hq/26)
+[Deployed site](https://galvanize-hq.firebaseapp.com)
 
 [YouTube walk-through](https://youtu.be/EAK5nqIcGGo)
 
