@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './g.png';
-import './App.css';
+// import logo from './g.png';
+// import './App.css';
 import LandingPage from './components/LandingPage'
 import Register from './components/Register'
 import HqPage from './components/HqPage'
