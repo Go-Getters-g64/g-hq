@@ -17,11 +17,10 @@ class DropDown extends Component {
 
   render() {
     return (
-      // console.log(this.props.user);
       <div>
-         <div className="dropdown">
-           <button className="dropbtn"><h1 id="userFirstLetter">{this.findFirstLetter()}</h1><i className="fa fa-sort-desc" aria-hidden="true"></i></button>
-           <div className="dropdown-content">
+        <div className="dropdown">
+          <button className="dropbtn"><h1 id="userFirstLetter">{this.findFirstLetter()}</h1><i className="fa fa-sort-desc" aria-hidden="true"></i></button>
+          <div className="dropdown-content">
             <a onClick={this.props.toggleEditUser}className="topLink" href="#">Edit Profile</a>
             <a onClick={this.props.toggleCohort} href="#">Cohort</a>
             <a href="https://members.galvanize.com/" target="_blank">Members Portal</a>
@@ -32,8 +31,8 @@ class DropDown extends Component {
             <a href={`https://github.com/${this.props.user.github_handle
             }`} target="_blank">Github</a>
             <a href="#">Student Links</a>
-            <a className="bottomLink" href="#"><i className="fa fa-plus" aria-hidden="true"></i> Add Link</a>
-           </div>
+            <a className="bottomLink" href="#"><i className="fa fa-plus" aria-hidden="true"></i>Add Link</a>
+          </div>
         </div>
       </div>
     )

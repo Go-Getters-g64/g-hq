@@ -14,13 +14,12 @@ class Cohort extends Component {
       const json = await response.json()
       this.setState({cohortData: json})
     }
-  
+
   render() {
-    console.log(this.state.cohortData)
     return (
-          <div>
-            <CohortList data={this.state.cohortData} />
-          </div>
+      <div>
+        <CohortList data={this.state.cohortData} />
+      </div>
     );
   }
 }

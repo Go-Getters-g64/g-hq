@@ -79,7 +79,7 @@ class HqPage extends Component {
       redirect: false,
       cohort: false
     })
-    
+
   }
 
   toggleEditInfoSuccess = (e) => {
@@ -102,34 +102,30 @@ class HqPage extends Component {
     })
   }
 
-
-
   render() {
-    
     return (
-        <div>
-          <HeaderHQ redirect={this.props.redirect} user={this.state.signedIn}
-            toggleMeetup={this.toggleMeetup}
-            toggleMastery={this.toggleMastery}
-            toggleCareerServices={this.toggleCareerServices}
-            toggleEditUser={this.toggleEditUser}
-            toggleCohort={this.toggleCohort}
-            onLogout={this.props.onLogout}
-             />
-
-            <main class='hqMain'>
-              <DailyPlan user={this.state.signedIn} />
-              <div class='variableComponent'>
-                {this.state.meetup ? <Meetup /> : null}
-                {this.state.mastery ? <Mastery 
-                addMastery={this.props.addMastery}
-                user={this.state.signedIn} /> : null}
-                {this.state.careerServices ? <CareerServices user={this.state.signedIn} /> : null}
-                {this.state.editUser ? <UpdateUser redirect={this.props.redirect} editInfo={this.state.editInfo} editInfoToggle={this.toggleEditInfoSuccess} userData={this.state.signedIn} editUser={this.props.editUser} /> : null}
-                {this.state.cohort ? <Cohort user={this.props.user} /> : null }
-              </div>
-            </main>
-        </div>
+      <div>
+        <HeaderHQ redirect={this.props.redirect} user={this.state.signedIn}
+          toggleMeetup={this.toggleMeetup}
+          toggleMastery={this.toggleMastery}
+          toggleCareerServices={this.toggleCareerServices}
+          toggleEditUser={this.toggleEditUser}
+          toggleCohort={this.toggleCohort}
+          onLogout={this.props.onLogout}
+           />
+        <main class='hqMain'>
+          <DailyPlan user={this.state.signedIn} />
+          <div class='variableComponent'>
+            {this.state.meetup ? <Meetup /> : null}
+            {this.state.mastery ? <Mastery
+            addMastery={this.props.addMastery}
+            user={this.state.signedIn} /> : null}
+            {this.state.careerServices ? <CareerServices user={this.state.signedIn} /> : null}
+            {this.state.editUser ? <UpdateUser redirect={this.props.redirect} editInfo={this.state.editInfo} editInfoToggle={this.toggleEditInfoSuccess} userData={this.state.signedIn} editUser={this.props.editUser} /> : null}
+            {this.state.cohort ? <Cohort user={this.props.user} /> : null }
+          </div>
+        </main>
+      </div>
     );
   }
 }
